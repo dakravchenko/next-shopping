@@ -1,19 +1,12 @@
 import Image from "next/image"
-// export async function getStaticPaths(){
-//     const res = await fetch('https://fakestoreapi.com/products')
+export async function getStaticParams(){
+    const res = await fetch('https://fakestoreapi.com/products')
 
-//     const products = await res.json()
-//     return products.map((product)=> ({
-//       paths: [
-//         {
-//           params: {
-//             id: product.id,
-//           },
-//         },
-//       ],
-//       fallback: true,
-//     }))
-// }
+    const products = await res.json()
+    return products.map((product)=> ({
+      id: product.id
+    }))
+}
 
 async function getProductById(id){
   const res = await fetch(`https://fakestoreapi.com/products/${id}`)

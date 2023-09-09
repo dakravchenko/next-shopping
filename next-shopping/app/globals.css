@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*main*/
+main {
+    @apply 
+    p-4 md:p-20 sm:p-10
+}
+
+/*nav*/
+.categories-nav {
+    @apply
+    pb-4 border-b-2 border-gray-200
+    flex justify-around
+}
+/*products*/
+
+.product-wrapper {
+    @apply
+    grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-8
+}
+
+.product-card {
+    @apply
+    h-[400px] w-[300px]
+    mb-20
+}
+
+.product-card h2 {
+    @apply
+    text-lg font-semibold mt-10
+}
+
+.product-card p {
+    @apply
+    text-gray-600
+}
+
+.image-wrapper {
+    @apply
+    bg-white p-4 shadow-md
+    h-[350px] w-[300px]
+    flex items-center justify-center
+}

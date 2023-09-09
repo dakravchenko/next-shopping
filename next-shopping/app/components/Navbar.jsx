@@ -5,8 +5,8 @@ export default function Navbar() {
     <nav>
       <div className="upper">
       </div>
-      <div className="categories">
-        <ul>
+      <div>
+        <ul className="categories-nav">
             <li><Link href="/categories/electronics">Electronics</Link></li>
             <li><Link href="/categories/jewelery">Jewelery</Link></li>
             <li><Link href="/categories/mens">Furniture</Link></li>

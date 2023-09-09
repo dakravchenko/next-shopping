@@ -18,7 +18,7 @@ async function getProductById(id){
 export default async function ProductCard({params}) {
   const product = await getProductById(params.id)
   return (
-    <div>
+    <main>
       <div className="product-info">
         <h2 className="product-title">{product.title}</h2>
         <p>{product.description}</p>
@@ -28,6 +28,6 @@ export default async function ProductCard({params}) {
         <p>{product.price}</p>
         <p>Add to cart component somewhere here</p>
       </div>
-    </div>
+    </main>
   )
 }

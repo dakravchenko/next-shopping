@@ -20,7 +20,7 @@ export default async  function productsByCategory({params}) {
     const products = await getProductsByCategoryName(params.categoryName)
   return (
     <main>
-        <h1 className="category-name">{decodeURIComponent(params.categoryName).toLocaleUpperCase()}</h1>
+        <h1 className="category-name">{decodeURIComponent(params.categoryName).toUpperCase()}</h1>
       <Products products={products}/>
     </main>
   )

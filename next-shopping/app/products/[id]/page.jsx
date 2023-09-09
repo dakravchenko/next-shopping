@@ -1,10 +1,10 @@
 import Image from "next/image"
-export async function getStaticParams(){
+export async function generateStaticParams(){
     const res = await fetch('https://fakestoreapi.com/products')
 
     const products = await res.json()
     return products.map((product)=> ({
-      id: product.id
+      id: toString(product.id),
     }))
 }
 
@@ -17,6 +17,7 @@ async function getProductById(id){
 
 export default async function ProductCard({params}) {
   const product = await getProductById(params.id)
+  console.log(product)
   return (
     <main>
       <div className="product-info">

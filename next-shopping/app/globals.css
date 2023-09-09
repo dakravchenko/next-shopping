@@ -43,3 +43,8 @@ main {
     h-[350px] w-[300px]
     flex items-center justify-center
 }
+
+.category-name {
+    @apply
+    text-lg font-bold mb-10
+}

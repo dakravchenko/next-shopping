@@ -11,8 +11,9 @@ export default async function Navbar() {
   const categories = await getAllCategories()
   return (
     <nav>
-      <div className="upper">
+      <div className="upper flex">
         <SearchField/>
+        <Link href='/cart'><li>Cart</li></Link>
       </div>
       <div>
         <ul className="categories-nav">

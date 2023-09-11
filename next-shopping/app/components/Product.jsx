@@ -21,7 +21,7 @@ export default function Product({product}) {
       onMouseLeave={handleMouseLeave}>
         <div className="image-wrapper">
           <Image src={product.image} alt={product.title} height={160} width={160}/>
-          {isHovered && <AddToCart />}
+          {isHovered && <AddToCart productId={product.id} />}
         </div>
         <h2>{product.title}</h2>
         <p>${product.price}</p>

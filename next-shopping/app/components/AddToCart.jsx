@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function AddToCart() {
   return (
-    <button className='relative bottom-0'>
+    <button className='add-to-cart-btn'>
       Add to cart
     </button>
   )

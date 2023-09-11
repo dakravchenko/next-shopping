@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SearchField from "./SearchField";
 
 async function getAllCategories(){
   const res = await fetch('https://fakestoreapi.com/products/categories')
@@ -11,6 +12,7 @@ export default async function Navbar() {
   return (
     <nav>
       <div className="upper">
+        <SearchField/>
       </div>
       <div>
         <ul className="categories-nav">

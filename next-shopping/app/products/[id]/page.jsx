@@ -17,7 +17,6 @@ async function getProductById(id){
 
 export default async function ProductCard({params}) {
   const product = await getProductById(params.id)
-  console.log(product)
   return (
     <main>
       <div className="product-info">

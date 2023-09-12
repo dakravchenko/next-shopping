@@ -5,7 +5,8 @@ import { useCart } from '../contexts/CartContext'
 export default function AddToCart({product}) {
   const { addToCart } = useCart();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    e.stopPropagation()
     addToCart(product);
   };
   return (

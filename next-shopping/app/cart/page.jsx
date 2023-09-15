@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 import { useCart } from '../contexts/CartContext';
+import Image from 'next/image';
 
 const Cart = () => {
   const { cart, removeFromCart, clearCart } = useCart();
@@ -16,10 +17,12 @@ const Cart = () => {
           {cart.map((product) => (
             <li key={product.id} className="flex items-center justify-between mb-2">
               <div className="flex items-center">
-                <img
+                <Image
                   src={product.image}
                   alt={product.title}
-                  className="h-16 w-16 object-cover object-center rounded"
+                  width={40}
+                  height={40}
+                  className="object-cover object-center rounded"
                 />
                 <div className="ml-2">
                   <h3 className="text-lg font-semibold">{product.title}</h3>

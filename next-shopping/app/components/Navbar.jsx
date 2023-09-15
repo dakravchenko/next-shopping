@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SearchField from "./SearchField";
 
+
 async function getAllCategories(){
   const res = await fetch('https://fakestoreapi.com/products/categories')
 

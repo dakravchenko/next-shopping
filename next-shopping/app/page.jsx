@@ -1,3 +1,4 @@
+
 import Products from "./components/Products"
 
 async function getAllProducts(){
@@ -12,8 +13,10 @@ export default async function Home() {
 
   const products = await getAllProducts()
   return (
+    <>
     <main>
       <Products products={products}/>
     </main>
+    </>
   )
 }

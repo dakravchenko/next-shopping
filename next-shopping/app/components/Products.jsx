@@ -1,11 +1,16 @@
-import Link from "next/link";
 import Product from "./Product";
+import Head from 'next/head';
 
 export default function Products({products}) {
   return (
     <div className="product-wrapper">
       {products.map((product) => (
-          <Product key={product.id} product={product}/>
+          <>
+            <Head>
+            <title>{product.title}</title>
+            </Head>
+            <Product key={product.id} product={product}/>
+          </>
       ))}
     </div>
   )

@@ -19,7 +19,7 @@ export default function Product({product}) {
     <div className='relative'
     onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}>
-     <Link href={`products/${product.id}`}>
+     <Link href={`/products/${product.id}`}>
       <div 
       className='product-card'>
         <div className="image-wrapper">

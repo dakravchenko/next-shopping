@@ -1,16 +1,22 @@
 import AddToCart from "@/app/components/AddToCart";
 import Image from "next/image";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const res = await fetch('https://fakestoreapi.com/products');
   const products = await res.json();
   return products.map((product) => ({
-    id: toString(product.id),
+    id: product.id.toString(),
   }));
 }
 
 async function getProductById(id) {
-  const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+  const res = await fetch(`https://fakestoreapi.com/products/${id}`, {
+    next: {
+      revalidate: 60 * 60 * 12
+    }
+  });
   return await res.json();
 }
 

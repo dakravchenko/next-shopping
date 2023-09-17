@@ -19,7 +19,7 @@ export default async function Navbar() {
       <div>
         <ul className="categories-nav">
           {categories.map((category) => (
-            <Link key={category} href={`/${encodeURIComponent(category)}`}>
+            <Link key={category} href={`/category/${encodeURIComponent(category)}`}>
               <li>{category.toUpperCase()}</li>
             </Link>
           ))}

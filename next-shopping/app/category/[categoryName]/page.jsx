@@ -1,4 +1,6 @@
+import Loading from "@/app/loading"
 import Products from "../../components/Products"
+import { Suspense } from "react"
 
 export async function generateStaticParams(){
     const res = await fetch('https://fakestoreapi.com/products/categories')
@@ -10,6 +12,7 @@ export async function generateStaticParams(){
 }
 
 async function getProductsByCategoryName(categoryName){
+  await new Promise(resolve => setTimeout(resolve, 3000))
     const res = await fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
   
     return await res.json()
@@ -21,7 +24,9 @@ export default async  function productsByCategory({params}) {
   return (
     <main>
         <h1 className="category-name">{decodeURIComponent(params.categoryName).toUpperCase()}</h1>
-      <Products products={products}/>
+        <Suspense fallback={<Loading/>}>
+          <Products products={products}/>
+        </Suspense>
     </main>
   )
 }

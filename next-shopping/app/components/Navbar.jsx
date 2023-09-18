@@ -1,6 +1,8 @@
 import Link from "next/link";
 import SearchField from "./SearchField";
 import { BsMinecartLoaded } from 'react-icons/bs';
+import CartCount from "./CartCount";
+
 
 
 async function getAllCategories(){
@@ -16,7 +18,10 @@ export default async function Navbar() {
       <div className="flex justify-between items-center">
         <SearchField/>
         <Link href='/cart' className="ml-auto">
-          <BsMinecartLoaded className="w-8 h-8"/>
+          <div className="flex gap-1">
+            <CartCount/>
+            <BsMinecartLoaded className="w-8 h-8"/>
+          </div>
         </Link>
       </div>
       <div>

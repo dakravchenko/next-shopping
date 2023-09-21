@@ -1,15 +1,26 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useProductContext } from '../contexts/ProductsContext';
 
 const SearchField = () => {
   const [searchText, setSearchText] = useState('');
+  const { searchProducts, setFilteredProducts } = useProductContext();
+
+  useEffect(() => {
+
+    // if (searchText.trim().length === 0) {
+    //   setFilteredProducts([]);
+    // }
+
+    const delayTimer = setTimeout(() => {
+      searchProducts(searchText);
+    }, 500);
+
+    return () => clearTimeout(delayTimer);
+  }, [searchText, searchProducts]);
 
   const handleChange = (e) => {
     setSearchText(e.target.value);
-  };
-
-  const handleSearch = () => {
-
   };
 
   return (
@@ -21,12 +32,6 @@ const SearchField = () => {
         value={searchText}
         onChange={handleChange}
       />
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={handleSearch}
-      >
-        Go
-      </button>
     </div>
   );
 };

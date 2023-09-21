@@ -12,7 +12,6 @@ export async function generateStaticParams(){
 }
 
 async function getProductsByCategoryName(categoryName){
-  await new Promise(resolve => setTimeout(resolve, 3000))
     const res = await fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
   
     return await res.json()

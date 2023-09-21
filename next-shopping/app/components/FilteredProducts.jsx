@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link';
-import { useProductContext } from '../contexts/ProductContext';
+import { useProductContext } from '../contexts/ProductsContext';
 
 const FilteredProducts = () => {
   const { filteredProducts, setSearchText } = useProductContext();
@@ -18,7 +18,7 @@ const FilteredProducts = () => {
         >
           <ul>
             {filteredProducts.map((product) => (
-            <Link key={product.id} href={`/products/${product.id}`}>
+            <Link key={product.id} href={`/products/${product.id}`} onClick={()=>setSearchText('')}>
               <li
                 className="flex justify-between items-center py-1 px-2 hover:bg-gray-100"
               >

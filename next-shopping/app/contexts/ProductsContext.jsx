@@ -6,6 +6,7 @@ const ProductContext = createContext();
 export function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     async function getAllProducts() {
@@ -22,6 +23,12 @@ export function ProductProvider({ children }) {
   }, []);
 
   const searchProducts = (searchText) => {
+
+    if (searchText.trim().length === 0) {
+        setFilteredProducts([]);
+        return;
+      }
+
     const filtered = products.filter((product) =>
       product.title.toLowerCase().includes(searchText.toLowerCase())
     );
@@ -29,7 +36,7 @@ export function ProductProvider({ children }) {
   };
 
   return (
-    <ProductContext.Provider value={{ products, filteredProducts, searchProducts, setFilteredProducts }}>
+    <ProductContext.Provider value={{ products, filteredProducts, searchProducts, setFilteredProducts, searchText, setSearchText  }}>
       {children}
     </ProductContext.Provider>
   );

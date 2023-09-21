@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import { useCart } from '../contexts/CartContext';
 import Image from 'next/image';
+import { RxCross1 } from 'react-icons/rx';
+import Link from 'next/link';
 
 const Cart = () => {
   const { cart, removeFromCart, clearCart } = useCart();
@@ -42,9 +44,9 @@ const Cart = () => {
                 </div>
                 <button
                   onClick={() => removeFromCart(product.id)}
-                  className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
+                  className="px-2 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
                 >
-                  Remove
+                  <RxCross1 size={24} />
                 </button>
               </li>
             ))}
@@ -57,12 +59,14 @@ const Cart = () => {
       )}
 
       <div className="mt-4">
+        <Link href="cart/confirmation">
         <button
           onClick={clearCart}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+          className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
         >
-          Clear Cart
+          Proceed
         </button>
+        </Link>
       </div>
     </div>
   );

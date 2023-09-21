@@ -20,14 +20,16 @@ export function CartProvider({ children }) {
   }, []);
 
   const addToCart = (product) => {
-    const updatedCart = [...cart, product];
+    const cartItemId = Date.now().toString();
+    const updatedCart = [...cart, { ...product, cartItemId }];
+    console.log(updatedCart)
     setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     setCartItemCount(updatedCart.length);
   };
 
-  const removeFromCart = (productId) => {
-    const updatedCart = cart.filter((product) => product.id !== productId);
+  const removeFromCart = (cartItemId) => {
+    const updatedCart = cart.filter((item) => item.cartItemId !== cartItemId);
     setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     setCartItemCount(updatedCart.length);

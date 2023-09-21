@@ -28,7 +28,7 @@ const Cart = () => {
         <>
           <ul>
             {cart.map((product) => (
-              <li key={product.id} className="flex items-center justify-between mb-2">
+              <li key={product.cartItemId} className="flex items-center justify-between mb-2">
                 <div className="flex items-center">
                   <Image
                     src={product.image}
@@ -43,7 +43,7 @@ const Cart = () => {
                   </div>
                 </div>
                 <button
-                  onClick={() => removeFromCart(product.id)}
+                  onClick={() => removeFromCart(product.cartItemId)}
                   className="px-2 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
                 >
                   <RxCross1 size={24} />

@@ -15,7 +15,7 @@ export default async function Navbar() {
   const categories = await getAllCategories()
   return (
     <nav>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center px-4 py-2">
         <SearchField/>
         <Link href='/cart' className="ml-auto">
           <div className="flex gap-1">
@@ -28,10 +28,10 @@ export default async function Navbar() {
         <ul className="categories-nav">
           {categories.map((category) => (
             <Link key={category} href={`/category/${encodeURIComponent(category)}`}>
-              <li>{category.toUpperCase()}</li>
+              <li className="capitalize">{category.toUpperCase()}</li>
             </Link>
           ))}
-            <Link href="/"><li>ALL</li></Link>
+            <Link href="/"><li className="capitalize">ALL</li></Link>
         </ul>
       </div>
     </nav>

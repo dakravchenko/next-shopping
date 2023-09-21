@@ -12,8 +12,8 @@ main {
 .categories-nav {
     @apply
     pb-4 border-b-2 border-gray-200
-    flex justify-around
-}
+    flex flex-wrap justify-around gap-4
+  }
 /*products*/
 
 .product-wrapper {

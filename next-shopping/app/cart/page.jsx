@@ -19,8 +19,8 @@ const Cart = () => {
   }, [cart]);
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-4">
-      <h2 className="text-2xl font-semibold mb-4">Cart</h2>
+    <div className="cart-wrapper">
+      <h2>Cart</h2>
 
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
@@ -28,23 +28,22 @@ const Cart = () => {
         <>
           <ul>
             {cart.map((product) => (
-              <li key={product.cartItemId} className="flex items-center justify-between mb-2">
-                <div className="flex items-center">
+              <li key={product.cartItemId}>
+                <div className="cart-item">
                   <Image
                     src={product.image}
                     alt={product.title}
                     width={40}
                     height={40}
-                    className="object-cover object-center rounded"
                   />
-                  <div className="ml-2">
-                    <h3 className="text-lg font-semibold">{product.title}</h3>
-                    <p className="text-gray-600">${product.price}</p>
+                  <div className="cart-item-info">
+                    <h3>{product.title}</h3>
+                    <p>${product.price}</p>
                   </div>
                 </div>
                 <button
                   onClick={() => removeFromCart(product.cartItemId)}
-                  className="px-2 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
+                  className="remove-btn"
                 >
                   <RxCross1 size={24} />
                 </button>
@@ -52,8 +51,8 @@ const Cart = () => {
             ))}
           </ul>
 
-          <div className="mt-4">
-            <p className="text-lg font-semibold">Total: ${totalPrice}</p>
+          <div className="total-price-container">
+            <p>Total: ${totalPrice}</p>
           </div>
         </>
       )}
@@ -62,7 +61,7 @@ const Cart = () => {
         <Link href="cart/confirmation">
         <button
           onClick={clearCart}
-          className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
+          className="proceed-btn"
         >
           Proceed
         </button>

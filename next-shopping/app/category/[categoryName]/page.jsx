@@ -1,31 +1,32 @@
-import Loading from "@/app/loading"
-import Products from "../../components/Products"
-import { Suspense } from "react"
+import Loading from "@/app/loading";
+import Products from "../../components/Products";
+import { Suspense } from "react";
 
-export async function generateStaticParams(){
-    const res = await fetch('https://fakestoreapi.com/products/categories')
+export async function generateStaticParams() {
+  const res = await fetch("https://fakestoreapi.com/products/categories");
+  const categories = await res.json();
 
-    const categories = await res.json()
-    return categories.map((category)=> ({
-      categoryName: encodeURIComponent(category),
-    }))
+  return categories.map((category) => ({
+    categoryName: category.split(" ").join("%20"),
+  }));
 }
 
-async function getProductsByCategoryName(categoryName){
-    const res = await fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
-  
-    return await res.json()
-    
-  }
+async function getProductsByCategoryName(categoryName) {
+  const res = await fetch(`https://fakestoreapi.com/products/category/${categoryName}`);
 
-export default async  function productsByCategory({params}) {
-    const products = await getProductsByCategoryName(params.categoryName)
+  return await res.json();
+}
+
+export default async function productsByCategory({ params }) {
+  const categoryName = params.categoryName.split("%20").join(" ");
+  const products = await getProductsByCategoryName(categoryName);
+
   return (
     <main>
-        <h1 className="category-name">{decodeURIComponent(params.categoryName).toUpperCase()}</h1>
-        <Suspense fallback={<Loading/>}>
-          <Products products={products}/>
-        </Suspense>
+      <h1 className="category-name">{categoryName.toUpperCase()}</h1>
+      <Suspense fallback={<Loading />}>
+        <Products products={products} />
+      </Suspense>
     </main>
-  )
+  );
 }

@@ -1,6 +1,6 @@
 # next-shopping
 
-[Deployed Version]([https://next-shopping-rr2f.vercel.app/])
+[Deployed version](https://next-shopping-rr2f.vercel.app/)
 
 **Project Description:**
 

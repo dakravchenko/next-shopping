@@ -7,7 +7,7 @@ export async function generateStaticParams() {
   const categories = await res.json();
 
   return categories.map((category) => ({
-    categoryName: category.split(" ").join("%20"),
+    categoryName: category.replace(/ /g, "%20"),
   }));
 }
 
@@ -18,7 +18,7 @@ async function getProductsByCategoryName(categoryName) {
 }
 
 export default async function productsByCategory({ params }) {
-  const categoryName = params.categoryName.split("%20").join(" ");
+  const categoryName = params.categoryName.replace(/%20/g, " ");
   const products = await getProductsByCategoryName(categoryName);
 
   return (
